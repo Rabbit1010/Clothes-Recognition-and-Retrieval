@@ -7,11 +7,13 @@
 from PIL import Image
 from os import listdir, getcwd
 from os.path import isfile, isdir, join
-from subprocess import call
 import sys
 import glob
-import cv2
 
+# Backgroung fill color
+fill_color = (255,255,255)
+
+# List .png files
 def list_files(extension):
     list = []
     for file in glob.glob("*.png"):
@@ -22,7 +24,11 @@ extension = "png"
 png_files = list_files(extension)
 print(png_files)
 for file in png_files:
-    rgba_img = cv2.imread(file) 
-    rgb_img = cv2.cvtColor(rgba_img,cv2.COLOR_RGBA2RGB)
+    img = Image.open(file)
+    img = img.convert("RGBA")
+    if img.mode in ("RGBA", "LA"):
+        background = Image.new(img.mode[:-1], img.size, fill_color)
+        background.paste(img, img.split()[-1]) # omit transparency
+        img = background
     name = file.split(".",1)
-    cv2.imwrite(name[0]+".jpg",rgb_img)
+    img.convert("RGB").save(name[0]+".jpg")
