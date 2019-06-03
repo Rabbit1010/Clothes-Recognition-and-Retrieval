@@ -16,11 +16,11 @@ fill_color = (255,255,255)
 # List .png files
 def list_files(extension):
     list = []
-    for file in glob.glob("*.png"):
+    for file in glob.glob("*"+extension):
         list.append(file)
     return list
 
-extension = "png"
+extension = ".png"
 png_files = list_files(extension)
 print(png_files)
 for file in png_files:
