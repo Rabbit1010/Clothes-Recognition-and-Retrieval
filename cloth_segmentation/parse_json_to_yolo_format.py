@@ -33,7 +33,7 @@ for filename in os.listdir(in_dir_name): # loop throught the entire folder
         continue
 
     file_path = os.path.join(in_dir_name, filename)
-    print(file_path)
+#    print(file_path)
     with open(file_path, 'r') as json_file:
         data = json.load(json_file)
         num_object = len(data)-2
@@ -51,8 +51,25 @@ for filename in os.listdir(in_dir_name): # loop throught the entire folder
                 width = x2 - x1
                 height = y2 - y1
 
+                yolo_x = x1/img_width  # relative top-left x
+                yolo_y = y1/img_height # relative top-left y
+                yolo_width = width/img_width
+                yolo_height = height/img_height
+
+                if yolo_x <= 0:
+                    yolo_x = 0.00001
+
+                if yolo_y <= 0:
+                    yolo_y = 0.00001
+
+                if yolo_x >= 1:
+                    yolo_x = 0.99999
+
+                if yolo_y >= 1:
+                    yolo_y = 0.99999
+
                 # output YOLO format
-                yolo_file.write("{} {:.6f} {:.6f} {:.6f} {:.6f}\n".format(class_ID, x1/img_width, y1/img_height, width/img_width, height/img_height))
+                yolo_file.write("{} {:.6f} {:.6f} {:.6f} {:.6f}\n".format(class_ID, yolo_x, yolo_y, yolo_width, yolo_height))
 
                 # show image for debugging
 #                cv2.rectangle(img, (x1,y1), (x2,y2), (66,238,244), 3)
@@ -69,7 +86,7 @@ for filename in os.listdir(in_dir_name): # loop throught the entire folder
         continue
 
     file_path = os.path.join(in_dir_name, filename)
-    print(file_path)
+#    print(file_path)
     with open(file_path, 'r') as json_file:
         data = json.load(json_file)
         num_object = len(data)-2
@@ -87,8 +104,25 @@ for filename in os.listdir(in_dir_name): # loop throught the entire folder
                 width = x2 - x1
                 height = y2 - y1
 
+                yolo_x = x1/img_width  # relative top-left x
+                yolo_y = y1/img_height # relative top-left y
+                yolo_width = width/img_width
+                yolo_height = height/img_height
+
+                if yolo_x <= 0:
+                    yolo_x = 0.00001
+
+                if yolo_y <= 0:
+                    yolo_y = 0.00001
+
+                if yolo_x >= 1:
+                    yolo_x = 0.99999
+
+                if yolo_y >= 1:
+                    yolo_y = 0.99999
+
                 # output YOLO format
-                yolo_file.write("{} {:.6f} {:.6f} {:.6f} {:.6f}\n".format(class_ID, x1/img_width, y1/img_height, width/img_width, height/img_height))
+                yolo_file.write("{} {:.6f} {:.6f} {:.6f} {:.6f}\n".format(class_ID, yolo_x, yolo_y, yolo_width, yolo_height))
 
                 # show image for debugging
 #                cv2.rectangle(img, (x1,y1), (x2,y2), (66,238,244), 3)
