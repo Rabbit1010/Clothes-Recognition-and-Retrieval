@@ -49,8 +49,8 @@ for filename in os.listdir(in_dir_name): # loop throught the entire folder
                 x2 = data['item{}'.format(i)]['bounding_box'][2]
                 y2 = data['item{}'.format(i)]['bounding_box'][3]
 
-                yolo_x = (x1+x2)/img_width  # relative center x
-                yolo_y = (y1+y2)/img_height # relative center y
+                yolo_x = (x1+x2)/img_width/2  # relative center x
+                yolo_y = (y1+y2)/img_height/2 # relative center y
                 yolo_width = (x2-x1)/img_width
                 yolo_height = (y2-y1)/img_height
 
@@ -81,8 +81,8 @@ for filename in os.listdir(in_dir_name): # loop throught the entire folder
                 x2 = data['item{}'.format(i)]['bounding_box'][2]
                 y2 = data['item{}'.format(i)]['bounding_box'][3]
 
-                yolo_x = (x1+x2)/img_width  # relative center x
-                yolo_y = (y1+y2)/img_height # relative center y
+                yolo_x = (x1+x2)/img_width/2  # relative center x
+                yolo_y = (y1+y2)/img_height/2 # relative center y
                 yolo_width = (x2-x1)/img_width
                 yolo_height = (y2-y1)/img_height
 
