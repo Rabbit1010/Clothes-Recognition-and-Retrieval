@@ -48,35 +48,14 @@ for filename in os.listdir(in_dir_name): # loop throught the entire folder
                 y1 = data['item{}'.format(i)]['bounding_box'][1]
                 x2 = data['item{}'.format(i)]['bounding_box'][2]
                 y2 = data['item{}'.format(i)]['bounding_box'][3]
-                width = x2 - x1
-                height = y2 - y1
 
-                yolo_x = x1/img_width  # relative top-left x
-                yolo_y = y1/img_height # relative top-left y
-                yolo_width = width/img_width
-                yolo_height = height/img_height
-
-                if yolo_x <= 0:
-                    yolo_x = 0.00001
-
-                if yolo_y <= 0:
-                    yolo_y = 0.00001
-
-                if yolo_x >= 1:
-                    yolo_x = 0.99999
-
-                if yolo_y >= 1:
-                    yolo_y = 0.99999
+                yolo_x = (x1+x2)/img_width  # relative center x
+                yolo_y = (y1+y2)/img_height # relative center y
+                yolo_width = (x2-x1)/img_width
+                yolo_height = (y2-y1)/img_height
 
                 # output YOLO format
                 yolo_file.write("{} {:.6f} {:.6f} {:.6f} {:.6f}\n".format(class_ID, yolo_x, yolo_y, yolo_width, yolo_height))
-
-                # show image for debugging
-#                cv2.rectangle(img, (x1,y1), (x2,y2), (66,238,244), 3)
-#
-#    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB) # Change it to RGB for all models to work properly
-#    plt.imshow(img)
-#    plt.show()
 
 in_dir_name = './DeepFashion2/validation/annos'
 out_dir_name = './DeepFashion2/validation/image'
@@ -101,32 +80,11 @@ for filename in os.listdir(in_dir_name): # loop throught the entire folder
                 y1 = data['item{}'.format(i)]['bounding_box'][1]
                 x2 = data['item{}'.format(i)]['bounding_box'][2]
                 y2 = data['item{}'.format(i)]['bounding_box'][3]
-                width = x2 - x1
-                height = y2 - y1
 
-                yolo_x = x1/img_width  # relative top-left x
-                yolo_y = y1/img_height # relative top-left y
-                yolo_width = width/img_width
-                yolo_height = height/img_height
-
-                if yolo_x <= 0:
-                    yolo_x = 0.00001
-
-                if yolo_y <= 0:
-                    yolo_y = 0.00001
-
-                if yolo_x >= 1:
-                    yolo_x = 0.99999
-
-                if yolo_y >= 1:
-                    yolo_y = 0.99999
+                yolo_x = (x1+x2)/img_width  # relative center x
+                yolo_y = (y1+y2)/img_height # relative center y
+                yolo_width = (x2-x1)/img_width
+                yolo_height = (y2-y1)/img_height
 
                 # output YOLO format
                 yolo_file.write("{} {:.6f} {:.6f} {:.6f} {:.6f}\n".format(class_ID, yolo_x, yolo_y, yolo_width, yolo_height))
-
-                # show image for debugging
-#                cv2.rectangle(img, (x1,y1), (x2,y2), (66,238,244), 3)
-
-#    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB) # Change it to RGB for all models to work properly
-#    plt.imshow(img)
-#    plt.show()
