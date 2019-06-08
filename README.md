@@ -1,4 +1,4 @@
-# Pattern-Recognition-Final-Project
+# Clothes-Recognition-and-Retrieval
 Query by image on clothing retails.
 
 # Project Proposal
