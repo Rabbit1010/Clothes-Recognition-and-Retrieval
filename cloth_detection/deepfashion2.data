@@ -1,5 +1,0 @@
-classes=13
-train = deepfashion2-train.txt
-valid = deepfashion2-test.txt
-names = deepfashion2.names
-backup = backup/ 
