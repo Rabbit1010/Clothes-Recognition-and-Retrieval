@@ -1,6 +1,6 @@
 # DeepFashion dataset image and annotations
 cloth_detection/DeepFashion2/*
-!cloth_detection/DeepFashion2/.gitkeep
+built_model/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

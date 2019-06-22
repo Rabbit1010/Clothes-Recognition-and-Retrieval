@@ -15,7 +15,7 @@ def ResNet_20():
     x = ResBlock(num_feature_in = 64, num_feature_out = 128, strides = (2,2)) (x)
     for _ in range(2):
         x = ResBlock(num_feature_in = 128, num_feature_out = 128)(x)
-    x = ResBlock(num_feature_in = 128, num_feature_out = 256, strides = (2,2)) (x)    
+    x = ResBlock(num_feature_in = 128, num_feature_out = 256, strides = (2,2)) (x)
     for _ in range(2):
         x = ResBlock(num_feature_in = 256, num_feature_out = 256)(x)
     x = ResBlock(num_feature_in = 256, num_feature_out = 512, strides = (2,2))(x)
@@ -32,4 +32,4 @@ def ResNet_20():
 if __name__ == "__main__":
     model  = ResNet_20()
     model.summary()
-    tf.keras.utils.plot_model(model, "Test.png", show_shapes = True)
+    tf.keras.utils.plot_model(model, "ResNet_20.png", show_shapes = True)
