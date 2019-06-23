@@ -29,3 +29,8 @@ For the classifier, we use a relatively small dataset consists of only 46 clothe
 ![](./images/system_pipeline.png)
 
 ## References
+1. Yannis Kalantidis, Lyndon Kennedy & Li-Jia Li. (2013) "Getting the Look: Clothing Recognition and Segmentation for Automatic Product Suggestions in Everyday Photos".
+
+2. Yuying Ge, Ruimao Zhang, Lingyun Wu, Xiaogang Wang, Xiaoou Tang & Ping Luo. (2019) "DeepFashion2: A Versatile Benchmark for Detection, Pose Estimation, Segmentation and Re-Identification of Clothing Images".
+
+3. Joseph Redmon & Ali Farhadi. (2018) "YOLOv3: An Incremental Improvement".

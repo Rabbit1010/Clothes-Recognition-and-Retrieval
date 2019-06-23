@@ -14,7 +14,7 @@ from utils import Read_Img_2_Tensor, Save_Image, Load_DeepFashion2_Yolov3
 
 model = Load_DeepFashion2_Yolov3()
 
-img_path = './images/test6.jpg'
+img_path = './images/test1.jpg'
 
 # Read image
 img = cv2.imread(img_path)
@@ -48,4 +48,4 @@ plt.show()
 plt.imshow(img_crop)
 plt.title('Cloth detection and crop')
 plt.show()
-Save_Image(img_crop, './images/test6_crop.jpg')
+Save_Image(img_crop, './images/test1_crop.jpg')

@@ -1,5 +1,6 @@
 # DeepFashion dataset image and annotations
 *.rar
+reports/
 TEMPORARY_STUFF/
 data/
 built_model/
