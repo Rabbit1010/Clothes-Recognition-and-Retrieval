@@ -1,5 +1,5 @@
 # Clothes-Recognition-and-Retrieval
-Clothes recognition and retrieval on clothing retails. Please see [report](.Final_report.pdf) for more details.
+Clothes recognition and retrieval on clothing retails. Please see [report](./Final_report.pdf) for more details.
 
 ### Result on real data
 ![](./images/results.jpg)
