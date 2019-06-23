@@ -1,21 +1,31 @@
 # Clothes-Recognition-and-Retrieval
-Query by image on clothing retails.
+Clothes recognition and retrieval on clothing retails. Please see [report](.Final_report.pdf) for more details.
 
-# Project Proposal
-[link](https://hackmd.io/ss4RX9l-SJanodhbGY6PeQ)
-
-# Dataset
-[link](https://drive.google.com/drive/u/1/folders/1dhQeqwmX97NfCM079KvZN1sBe-fs1nid)
-
-# Cloth Detection
-A [Yolo-v3](https://pjreddie.com/media/files/papers/YOLOv3.pdf) object detection network is trained to detect the clothes. 
-
-The clothes consists of these classes:
-![](./images/cls.jpg)
-
-The dataset used is the comprehensive fashion dataset [DeepFashion2](https://github.com/switchablenorms/DeepFashion2), it can be downloaded at their Git Hub page.
+### Result on real data
+![](./images/results.jpg)
 
 ## Usage
-1. Unzip Deep Fashion 2 dataset to `./cloth_segmentation/DeepFashion2`
-2. Run `parse_json_to_yolo_format.py` to generate YOLO bounding box format (.txt)
+### Required package
+1. tensorflow (2.0.0a0), GPU version can also be used
+2. opencv (4.1.0.25)
 
+### Installation
+```bash
+pip install -r requirements.txt
+```
+
+### Reproduce results
+1. Run `main.py` to produce final classification result
+2. Run `cloth_detection.py` to produce images with clothes detection bounding boxes.
+
+### Model weights
+We trained a Yolo-v3 object detection on [DeepFashion2](https://github.com/switchablenorms/DeepFashion2) dataset, pre-trained model weights (tensorflow weights and darknet weights) can be download [here](https://drive.google.com/file/d/1DPydA0FpLYEHaFYDa8_oZAot_Ou5JefK/).
+
+### Dataset
+For the classifier, we use a relatively small dataset consists of only 46 clothes of 2 classes (clothes with stripes and clothes without stripes), the dataset can be download [here](https://drive.google.com/file/d/1oCMPB1MSsB3yJdOLm2iEZFGyYSKXQmIw/). 
+![](./images/clothes_class.jpg)
+
+## System pipeline
+![](./images/system_pipeline.png)
+
+## References

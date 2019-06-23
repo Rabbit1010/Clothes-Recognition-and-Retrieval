@@ -45,7 +45,7 @@ def Draw_Bounding_Box(img, list_obj):
         text = '{}: {:.2f}'.format(obj['label'], obj['confidence'])
 
         # draw bounding box and labels
-        img = cv2.rectangle(img, (x1, y1), (x2, y2), color, 2)
+        img = cv2.rectangle(img, (x1, y1), (x2, y2), color, 4)
         img = cv2.putText(img, text, (x1, y1-5), cv2.FONT_HERSHEY_SIMPLEX, 1, color, 2, cv2.LINE_AA)
 
     return img
@@ -60,8 +60,16 @@ def Read_Img_2_Tensor(img_path):
 def Load_DeepFashion2_Yolov3():
     t1 = time.time()
     model = YoloV3(classes=13)
-    model.load_weights('../built_model/deepfashion2_yolov3')
+    model.load_weights('./built_model/deepfashion2_yolov3')
     t2 = time.time()
     print('Load DeepFashion2 Yolo-v3 from disk: {:.2f} sec'.format(t2 - t1))
 
     return model
+
+def Save_Image(image_array, save_path):
+    if image_array.dtype == 'float32':
+        cv2.imwrite(save_path, cv2.cvtColor(image_array, cv2.COLOR_RGB2BGR)*255)
+    elif image_array.dtype == 'uint8':
+        cv2.imwrite(save_path, cv2.cvtColor(image_array, cv2.COLOR_RGB2BGR))
+    else:
+        raise ValueError('Unrecognize type of image array: {}', image_array.dtype)

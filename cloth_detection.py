@@ -9,9 +9,7 @@ import numpy as np
 import time
 import tensorflow as tf
 import cv2
-import matplotlib.pyplot as plt
 
-from yolov3_tf2.models import YoloV3, YoloV3Tiny
 from utils import Read_Img_2_Tensor, Load_DeepFashion2_Yolov3, Draw_Bounding_Box
 
 def Detect_Clothes(img, model_yolov3, eager_execution=True):
@@ -44,12 +42,10 @@ def Detect_Clothes(img, model_yolov3, eager_execution=True):
 
     return list_obj
 
-def Detect_Clothes_and_Crop(img_path, threshold=0.95):
-    img = Read_Img_2_Tensor(img_path)
-    model = Load_DeepFashion2_Yolov3()
-    list_obj = Detect_Clothes(img, model)
+def Detect_Clothes_and_Crop(img_tensor, model, threshold=0.5):
+    list_obj = Detect_Clothes(img_tensor, model)
 
-    img = np.squeeze(img.numpy()) # cast tensor back to numpy array
+    img = np.squeeze(img_tensor.numpy())
     img_width = img.shape[1]
     img_height = img.shape[0]
 
@@ -61,7 +57,7 @@ def Detect_Clothes_and_Crop(img_path, threshold=0.95):
     return img_crop
 
 if __name__ == '__main__':
-    img = Read_Img_2_Tensor('../images/test1.jpg')
+    img = Read_Img_2_Tensor('./images/test6.jpg')
     model = Load_DeepFashion2_Yolov3()
     list_obj = Detect_Clothes(img, model)
     img_with_boxes = Draw_Bounding_Box(img, list_obj)
@@ -69,4 +65,4 @@ if __name__ == '__main__':
     cv2.imshow("Clothes detection", cv2.cvtColor(img_with_boxes, cv2.COLOR_RGB2BGR))
     cv2.waitKey(0)
     cv2.destroyAllWindows()
-    cv2.imwrite("../images/out1.jpg", cv2.cvtColor(img_with_boxes, cv2.COLOR_RGB2BGR)*255)
+    cv2.imwrite("./images/test6_clothes_detected.jpg", cv2.cvtColor(img_with_boxes, cv2.COLOR_RGB2BGR)*255)

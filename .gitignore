@@ -1,5 +1,7 @@
 # DeepFashion dataset image and annotations
-cloth_detection/DeepFashion2/*
+*.rar
+TEMPORARY_STUFF/
+data/
 built_model/
 
 # Byte-compiled / optimized / DLL files
