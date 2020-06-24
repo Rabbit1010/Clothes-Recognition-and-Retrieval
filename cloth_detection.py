@@ -10,7 +10,7 @@ import time
 import tensorflow as tf
 import cv2
 
-from utils import Read_Img_2_Tensor, Load_DeepFashion2_Yolov3, Draw_Bounding_Box
+from utils_my import Read_Img_2_Tensor, Load_DeepFashion2_Yolov3, Draw_Bounding_Box
 
 def Detect_Clothes(img, model_yolov3, eager_execution=True):
     """Detect clothes in an image using Yolo-v3 model trained on DeepFashion2 dataset"""

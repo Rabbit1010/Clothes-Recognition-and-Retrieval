@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import cv2
 
 from cloth_detection import Detect_Clothes_and_Crop
-from utils import Read_Img_2_Tensor, Save_Image, Load_DeepFashion2_Yolov3
+from utils_my import Read_Img_2_Tensor, Save_Image, Load_DeepFashion2_Yolov3
 
 model = Load_DeepFashion2_Yolov3()
 
